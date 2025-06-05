@@ -1,239 +1,413 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
-  </head>
-  <body>
-    <nav id="desktop-nav">
-      <div class="logo">Sadeed Aamir</div>
-      <div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Sadeed Aamir - Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f8fafc; /* Light gray background */
+        }
+        .section-title {
+            @apply text-3xl font-bold text-gray-700 mb-10 text-center;
+        }
+        .card {
+            /* New card style: more subtle shadow, border for definition */
+            @apply bg-white rounded-lg shadow-sm border border-gray-200 p-6 transition-all duration-300 ease-in-out hover:shadow-md;
+        }
+        .tag {
+            /* New tag style: teal accent */
+            @apply bg-teal-100 text-teal-700 text-xs font-semibold mr-2 mb-2 px-3 py-1 rounded-full;
+        }
+        .nav-link {
+            @apply text-gray-600 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium transition-colors;
+        }
+        .hero-bg-light {
+            background-color: #ffffff; /* White hero background */
+        }
+        .text-accent {
+            color: #0d9488; /* Teal accent color */
+        }
+        .btn-primary-accent {
+            @apply bg-teal-600 text-white font-semibold py-2.5 px-6 rounded-lg hover:bg-teal-700 transition-colors duration-300;
+        }
+        .nav-active {
+            @apply text-teal-600 font-semibold;
+        }
+    </style>
+</head>
+<body class="text-gray-700">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed w-full z-20 top-0 border-b border-gray-200">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold text-accent">Sadeed Aamir</a>
+            <div class="hidden md:flex space-x-3">
+                <a href="#home" class="nav-link nav-active" data-section="home">Home</a>
+                <a href="#about" class="nav-link" data-section="about">About</a>
+                <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+                <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+                <a href="#education" class="nav-link" data-section="education">Education</a>
+                <a href="#experience" class="nav-link" data-section="experience">Experience</a>
+                <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="nav-toggle" class="text-gray-600 focus:outline-none" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Nav -->
+        <div id="nav-menu" class="md:hidden hidden bg-white shadow-lg border-t border-gray-200">
+            <a href="#home" class="block nav-link px-6 py-3 hover:bg-gray-50" data-section="home">Home</a>
+            <a href="#about" class="block nav-link px-6 py-3 hover:bg-gray-50" data-section="about">About</a>
+            <a href="#skills" class="block nav-link px-6 py-3 hover:bg-gray-50" data-section="skills">Skills</a>
+            <a href="#projects" class="block nav-link px-6 py-3 hover:bg-gray-50" data-section="projects">Projects</a>
+            <a href="#education" class="block nav-link px-6 py-3 hover:bg-gray-50" data-section="education">Education</a>
+            <a href="#experience" class="block nav-link px-6 py-3 hover:bg-gray-50" data-section="experience">Experience</a>
+            <a href="#contact" class="block nav-link px-6 py-3 hover:bg-gray-50" data-section="contact">Contact</a>
+        </div>
     </nav>
-    <nav id="hamburger-nav">
-      <div class="logo">Sadeed</div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg-light pt-36 pb-20 px-6 text-gray-700">
+        <div class="container mx-auto flex flex-col md:flex-row items-center text-center md:text-left">
+            <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                <h1 class="text-4xl sm:text-5xl font-bold mb-4">
+                    Hi, I'm <span class="text-accent">Muhammad Sadeed Aamir</span>
+                </h1>
+                <p class="text-xl sm:text-2xl text-gray-600 mb-6">
+                    Software Engineer specializing in Mobile Development and robust DevOps Solutions.
+                </p>
+                <p class="text-gray-500 mb-8 leading-relaxed">
+                    I build high-quality, scalable applications and streamline development processes. Passionate about leveraging technology to solve real-world problems.
+                </p>
+                <a href="#projects" class="btn-primary-accent inline-block mr-3">View My Work</a>
+                <a href="#contact" class="border border-teal-600 text-teal-600 font-semibold py-2.5 px-6 rounded-lg hover:bg-teal-50 transition-colors duration-300 inline-block">Get In Touch</a>
+            </div>
+            <div class="md:w-1/2">
+                <!-- Replace with your actual photo -->
+                <img src="https://placehold.co/400x400/E0F2F7/0D9488?text=S.A&font=Inter" alt="Muhammad Sadeed Aamir" class="rounded-full shadow-xl mx-auto md:mx-0 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 object-cover">
+            </div>
         </div>
-        <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-        </div>
-      </div>
-    </nav>
-    <section id="profile">
-      <div class="section__pic-container">
-        <img src="./assets/profilep.png" alt="profile picture" />
-      </div>
-      <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Sadeed</h1>
-        <p class="section__text__p2">Rookie Developer</p>
-        <div class="btn-container">
-          <button class="btn btn-color-1" onclick="location.href='./#contact'">
-            Contact Info
-          </button>
-        </div>
-        <div id="socials-container">
-          <img
-            src="./assets/github.png"
-            alt="My Github profile"
-            class="icon"
-            onclick="location.href='https://github.com/Sadeed-1'"
-          />
-        </div>
-      </div>
     </section>
-    <section id="about">
-      <p class="section__text__p1">Get To Know More</p>
-      <h1 class="title">About Me</h1>
-      <div class="section-container">
-        <div class="about-details-container">
-          <div class="about-containers">
-            <div class="details-container">
-              <img
-                src="./assets/experience.png"
-                alt="Experience icon"
-                class="icon"
-              />
-              <h3>Experience</h3>
-              <p>1 year <br />Development</p>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-teal-50"> {/* Light teal background for contrast */}
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">About Me</h2>
+            <div class="max-w-3xl mx-auto text-center">
+                <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+                    I'm a final-year Computer Science student at FAST National University (expected graduation: June 2025) with a strong CGPA of 3.16 and a consistent record on the Dean's List. My academic journey has equipped me with a solid foundation in software engineering principles and a passion for continuous learning.
+                </p>
+                <p class="text-lg text-gray-600 leading-relaxed">
+                    My expertise lies in <strong class="font-semibold text-gray-700">Flutter</strong> for cross-platform mobile development and implementing efficient <strong class="font-semibold text-gray-700">DevOps</strong> practices using tools like Docker, Kubernetes, Jenkins, and cloud platforms such as AWS and GCP. I'm driven by the challenge of building innovative solutions and optimizing development workflows.
+                </p>
             </div>
-            <div class="details-container">
-              <img
-                src="./assets/education.png"
-                alt="Education icon"
-                class="icon"
-              />
-              <h3>Education</h3>
-              <p>B.Sc. Bachelors Degree</p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">My Expertise</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-code fa-lg text-accent mr-3" aria-hidden="true"></i>
+                        <h3 class="text-xl font-semibold text-gray-700">Languages</h3>
+                    </div>
+                    <div class="flex flex-wrap">
+                        <span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">Dart</span><span class="tag">C++</span><span class="tag">C#</span><span class="tag">SQL</span><span class="tag">HTML/CSS</span>
+                    </div>
+                </div>
+                <div class="card">
+                     <div class="flex items-center mb-3">
+                        <i class="fas fa-mobile-screen-button fa-lg text-accent mr-3" aria-hidden="true"></i>
+                        <h3 class="text-xl font-semibold text-gray-700">Mobile Development</h3>
+                    </div>
+                    <div class="flex flex-wrap">
+                        <span class="tag">Flutter</span><span class="tag">Firebase</span><span class="tag">REST APIs</span><span class="tag">Video SDKs</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-server fa-lg text-accent mr-3" aria-hidden="true"></i>
+                        <h3 class="text-xl font-semibold text-gray-700">Web & Backend</h3>
+                    </div>
+                    <div class="flex flex-wrap">
+                        <span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">React.js</span><span class="tag">MongoDB</span><span class="tag">MySQL</span>
+                    </div>
+                </div>
+                <div class="card">
+                     <div class="flex items-center mb-3">
+                        <i class="fas fa-cogs fa-lg text-accent mr-3" aria-hidden="true"></i>
+                        <h3 class="text-xl font-semibold text-gray-700">DevOps & Cloud</h3>
+                    </div>
+                    <div class="flex flex-wrap">
+                        <span class="tag">Docker</span><span class="tag">Jenkins</span><span class="tag">GitHub Actions</span><span class="tag">Kubernetes</span><span class="tag">Terraform</span><span class="tag">SonarQube</span><span class="tag">Nginx</span><span class="tag">AWS</span><span class="tag">GCP</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-tools fa-lg text-accent mr-3" aria-hidden="true"></i>
+                        <h3 class="text-xl font-semibold text-gray-700">Tools & Platforms</h3>
+                    </div>
+                    <div class="flex flex-wrap">
+                        <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">VS Code</span><span class="tag">IntelliJ</span><span class="tag">MySQL Workbench</span><span class="tag">Postman</span>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="text-container">
-            <p>
-              My fascination with technology was sparked when, as a child, I decided to take apart my Playstation console, eager to see how it all worked inside. This curiosity has led me to pursue Computer Science. I find it intriguing how fast society has been shaped and continues to be, by the influence of Computer Science. With the knowledge and skills I will attain from this course, the creative ideas that I could bring into fruition would be endless. I hope to become one of the computer scientists who adapt technology to help the human race evolve. One possibility would be for artificially intelligent gadgets to recognize different people and adjust to their individual needs based on personal preferences.
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50"> {/* Alternating background */}
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Project 1: InHomeTutors -->
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-1">InHomeTutors – Geofenced Tutoring App [FYP]</h3>
+                    <p class="text-sm text-gray-500 mb-3">Cross-Platform Mobile Application</p>
+                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                        Developed a comprehensive Flutter app to connect students with tutors locally. Features include AWS RDS (MySQL) backend, Firebase real-time chat, Stripe payments, video conferencing, GPS geofencing, and an AI (Gemini API) quiz bot.
+                    </p>
+                    <div class="mt-auto">
+                        <strong class="text-gray-700 text-xs block mb-2">Technologies Used:</strong>
+                        <div class="flex flex-wrap">
+                            <span class="tag">Flutter</span><span class="tag">MySQL</span><span class="tag">AWS RDS</span><span class="tag">Firebase</span><span class="tag">Stripe</span><span class="tag">Gemini API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Cloud-Based Linux Media Server -->
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-1">Cloud-Based Linux Media Server | GCP</h3>
+                     <p class="text-sm text-gray-500 mb-3">Scalable Cloud Infrastructure</p>
+                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                        Set up a secure Ubuntu VM on GCP for media streaming. Configured Nginx for high-performance delivery, replacing an initial Python HTTP server. Secured with firewall rules and SSH.
+                    </p>
+                     <div class="mt-auto">
+                        <strong class="text-gray-700 text-xs block mb-2">Technologies Used:</strong>
+                        <div class="flex flex-wrap">
+                           <span class="tag">GCP</span><span class="tag">Ubuntu</span><span class="tag">Nginx</span><span class="tag">Python</span><span class="tag">SSH</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: CI/CD Pipeline -->
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-1">CI/CD Pipeline for Automated Deployment</h3>
+                    <p class="text-sm text-gray-500 mb-3">Kubernetes & GitOps</p>
+                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                        Designed and implemented a full CI/CD pipeline with Jenkins, SonarQube, and ArgoCD for automated builds, testing, and deployments to a Kubernetes cluster using GitOps principles.
+                    </p>
+                     <div class="mt-auto">
+                        <strong class="text-gray-700 text-xs block mb-2">Technologies Used:</strong>
+                        <div class="flex flex-wrap">
+                            <span class="tag">Jenkins</span><span class="tag">SonarQube</span><span class="tag">ArgoCD</span><span class="tag">Kubernetes</span><span class="tag">Docker</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Expense Tracker -->
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-1">Expense Tracker – Flutter Application</h3>
+                    <p class="text-sm text-gray-500 mb-3">Personal Finance Management</p>
+                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                        Built a user-friendly mobile app with Flutter and Firebase for tracking personal expenses, featuring categorization, budgeting, and visual spending insights.
+                    </p>
+                     <div class="mt-auto">
+                        <strong class="text-gray-700 text-xs block mb-2">Technologies Used:</strong>
+                        <div class="flex flex-wrap">
+                            <span class="tag">Flutter</span><span class="tag">Firebase</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">Education</h2>
+            <div class="max-w-2xl mx-auto card p-8"> {/* Applied card styling */}
+                <div class="flex items-start">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-graduation-cap fa-3x text-accent mr-6 mt-1" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-700">FAST National University of Computer and Emerging Sciences</h3>
+                        <p class="text-lg text-gray-600">Bachelor of Science in Computer Science</p>
+                        <p class="text-md text-gray-500">Expected Graduation: Jun, 2025</p>
+                        <p class="text-md text-gray-500">CGPA: 3.16 / 4.00</p>
+                        <p class="text-md text-teal-600 font-semibold mt-1">Honors: Dean's List (3 Semesters)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership/Extracurricular Section -->
+    <section id="experience" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">Leadership & Activities</h2>
+            <div class="space-y-8 max-w-3xl mx-auto">
+                <div class="card p-6">
+                     <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                             <i class="fas fa-chalkboard-teacher fa-2x text-accent mr-5 mt-1" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-700">Teaching Assistant (Programming Fundamentals)</h3>
+                            <p class="text-md text-gray-600">FAST-NU (Aug 2023 - Dec 2023)</p>
+                            <p class="text-gray-600 mt-2 text-sm leading-relaxed">Mentored 50+ first-year students, graded assignments, and facilitated understanding of core programming principles.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card p-6">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-users-cog fa-2x text-accent mr-5 mt-1" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-700">Event Management Lead</h3>
+                            <p class="text-md text-gray-600">DAIRA 2021 & 2022 (University Annual Festival)</p>
+                            <p class="text-gray-600 mt-2 text-sm leading-relaxed">Led logistics and team coordination for the university's largest festival, ensuring successful execution of multiple events.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-teal-700 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-6">Get In Touch</h2>
+            <p class="text-lg mb-10 max-w-xl mx-auto text-teal-100">
+                I'm excited about new challenges and opportunities. Whether you have a project, a question, or just want to connect, feel free to reach out!
             </p>
-          </div>
-        </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#experience'"
-      />
-    </section>
-    <section id="experience">
-      <p class="section__text__p1">Explore My</p>
-      <h1 class="title">Experience</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container">
-            <h2 class="experience-sub-title">Web Development</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>HTML</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>CSS</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>JavaScript</h3>
-                  <p>Basic</p>
-                </div>
-              </article>
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-5 sm:space-y-0 sm:space-x-8 text-lg mb-10">
+                <a href="mailto:sadeedaamir@gmail.com" class="hover:text-teal-200 transition-colors flex items-center">
+                    <i class="fas fa-envelope mr-2.5" aria-hidden="true"></i> sadeedaamir@gmail.com
+                </a>
+                <a href="tel:+923414345609" class="hover:text-teal-200 transition-colors flex items-center">
+                    <i class="fas fa-phone mr-2.5" aria-hidden="true"></i> (+92) 341-4345609
+                </a>
             </div>
-          </div>
-          <div class="details-container">
-            <h2 class="experience-sub-title">BackEnd Development</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>MySQL</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Python</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Node JS</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Express JS</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Git</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
+            <div class="flex justify-center space-x-6 mb-10">
+                 <a href="https://github.com/sadeed-aamir" target="_blank" rel="noopener noreferrer" class="text-teal-200 hover:text-white transition-colors" aria-label="Muhammad Sadeed Aamir's GitHub Profile">
+                    <i class="fab fa-github fa-3x" aria-hidden="true"></i>
+                </a>
+                <a href="https://linkedin.com/in/sadeed-aamir" target="_blank" rel="noopener noreferrer" class="text-teal-200 hover:text-white transition-colors" aria-label="Muhammad Sadeed Aamir's LinkedIn Profile">
+                     <i class="fab fa-linkedin fa-3x" aria-hidden="true"></i>
+                </a>
             </div>
-          </div>
+             <a href="path/to/your/resume.pdf" download="Muhammad_Sadeed_Aamir_Resume.pdf" class="bg-white text-teal-700 font-semibold py-2.5 px-6 rounded-lg hover:bg-gray-100 transition-colors duration-300 inline-block">
+                Download Resume <i class="fas fa-download ml-2" aria-hidden="true"></i>
+            </a>
         </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#contact'"
-      />
     </section>
-    <section id="contact">
-      <p class="section__text__p1">Get in Touch</p>
-      <h1 class="title">Contact Me</h1>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img
-            src="./assets/email.png"
-            alt="Email icon"
-            class="icon contact-icon email-icon"
-          />
-          <p><a href="mailto:sadeedaamir@gmail.com">sadeeaamir@gmail.com</a></p>
-        </div>
-      </div>
-    </section>
-    <footer>
-      <nav>
-        <div class="nav-links-container">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
-      <p>Copyright &#169; 2023 John Doe. All Rights Reserved.</p>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-400 py-8 text-center">
+        <p>&copy; <span id="currentYear"></span> Muhammad Sadeed Aamir. All Rights Reserved.</p>
+        <p class="text-xs mt-1">Designed with <span class="text-teal-500">&hearts;</span> using Tailwind CSS.</p>
     </footer>
-    <script src="script.js"></script>
-  </body>
+
+    <script>
+        // Mobile nav toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                const isExpanded = navMenu.classList.toggle('hidden');
+                navToggle.setAttribute('aria-expanded', !isExpanded);
+            });
+        }
+
+        // Smooth scroll & active nav link highlighting
+        const navLinks = document.querySelectorAll('nav a.nav-link');
+        const sections = document.querySelectorAll('section');
+
+        function changeNavActiveState() {
+            let currentSectionId = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - (window.innerHeight / 3) ) { // Adjust offset as needed
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('nav-active');
+                if (link.getAttribute('data-section') === currentSectionId) {
+                    link.classList.add('nav-active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', changeNavActiveState);
+        changeNavActiveState(); // Initial check
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else if (href.startsWith('#') && href.length > 1) {
+                    try {
+                        const targetElement = document.querySelector(href);
+                        if (targetElement) {
+                            e.preventDefault();
+                            const offsetTop = targetElement.offsetTop - 70; // Adjust for fixed nav height
+
+                            window.scrollTo({
+                                top: offsetTop,
+                                behavior: 'smooth'
+                            });
+
+                            if (navMenu && !navMenu.classList.contains('hidden') && this.closest('#nav-menu')) {
+                                navMenu.classList.add('hidden');
+                                navToggle.setAttribute('aria-expanded', 'false');
+                            }
+                        }
+                    } catch (err) {
+                        // console.error("Error in smooth scroll selector:", err);
+                    }
+                }
+                 // Highlight clicked nav link immediately
+                navLinks.forEach(link => link.classList.remove('nav-active'));
+                this.classList.add('nav-active'); // For main nav
+                if (this.closest('#nav-menu')) { // For mobile nav
+                    document.querySelector(`.hidden.md\\:flex a.nav-link[data-section="${this.dataset.section}"]`)?.classList.add('nav-active');
+                }
+
+
+            });
+        });
+
+        // Set current year in footer
+        const currentYearElement = document.getElementById('currentYear');
+        if (currentYearElement) {
+            currentYearElement.textContent = new Date().getFullYear();
+        }
+
+        // Reminder: Replace 'path/to/your/resume.pdf' with the actual path to your resume file for the download button.
+        // Also ensure your GitHub username 'sadeed-aamir' and LinkedIn profile ID 'sadeed-aamir' are correct.
+        // Update the hero image placeholder: src="https://placehold.co/400x400/E0F2F7/0D9488?text=S.A&font=Inter"
+    </script>
+
+</body>
 </html>
